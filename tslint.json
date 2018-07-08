@@ -12,6 +12,7 @@
     "no-shadowed-variable": false,
     "no-console": false,
     "jsx-no-lambda": false,
-    "member-ordering": false
+    "member-ordering": false,
+    "one-variable-per-declaration": false
   }
 }

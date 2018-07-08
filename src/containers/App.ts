@@ -4,11 +4,10 @@ import { IStoreState } from '../models'
 
 const mapStateToProps = (state: IStoreState) => {
   return {
-    mode: state.mode,
+    author: state.author,
   }
 }
 
 export default connect(
   mapStateToProps,
-  null,
 )(App)

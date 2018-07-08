@@ -1,16 +1,13 @@
 import { connect } from 'react-redux'
 import Buttons from '../components/Buttons'
-import { newText, changeMode } from '../actions'
+import { newText } from '../actions'
 import { Dispatch } from 'redux'
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
-    newText: () => {
-      dispatch(newText())
+    newText: (mode?: string, words?: string[]) => {
+      dispatch(newText(mode, words))
     },
-    changeMode: (mode: string) => {
-      dispatch(changeMode(mode))
-    }
   }
 }
 

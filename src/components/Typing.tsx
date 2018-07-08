@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { PRINTABLE_CHARACTERS } from '../utils'
+import { PRINTABLE_CHARACTERS } from '../constants'
 
 const typedColor = '#A0A0A0'
 const cursorColor = '#BEBEBE'

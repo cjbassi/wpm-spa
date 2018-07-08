@@ -5,10 +5,8 @@ import { newText, changeCharsTyped, changeErrorPercent } from '../actions'
 import { IStoreState } from '../models'
 
 const matchStateToProps = (state: IStoreState) => {
-  const text = (state.mode === 'quote') ? state.quoteObj[2] :
-    (state.mode === 'random') ? state.random : state.code
   return {
-    text,
+    text: state.text,
   }
 }
 

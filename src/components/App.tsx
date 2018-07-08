@@ -6,28 +6,31 @@ import Typing from '../containers/Typing'
 import Buttons from '../containers/Buttons'
 
 interface IAppProps {
-  mode: string;
+  author: string | null;
   keydown?: any;
 }
 
 @keydown
 export default class App extends React.Component<IAppProps> {
   public render() {
-    const { mode, keydown } = this.props
+    const { author, keydown } = this.props
     return (
       <div>
+        <h3>
+          <a href='https://github.com/cjbassi/wpm-react'>wpm-react</a>
+        </h3>
         <Buttons />
         <br />
         <Stats />
         <br />
         <Typing keydown={keydown} />
-        {(mode === 'quote') &&
-          <div>
-            <br />
-            <Info />
-          </div>
-        }
-      </div>
+          {(author !== null) &&
+            <div>
+              <br />
+              <Info />
+            </div>
+      }
+      </div >
     )
   }
 }
