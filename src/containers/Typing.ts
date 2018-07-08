@@ -2,7 +2,7 @@ import { connect } from 'react-redux'
 import Typing from '../components/Typing'
 import { Dispatch } from 'redux'
 import { newText, changeCharsTyped, changeErrorPercent } from '../actions'
-import { IStoreState } from '../reducers'
+import { IStoreState } from '../models'
 
 const matchStateToProps = (state: IStoreState) => {
   const text = (state.mode === 'quote') ? state.quoteObj[2] :

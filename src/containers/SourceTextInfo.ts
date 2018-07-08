@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import SourceTextInfo from '../components/SourceTextInfo'
-import { IStoreState } from '../reducers'
+import { IStoreState } from '../models'
 
 const matchStateToProps = (state: IStoreState) => {
   return {

@@ -3,26 +3,9 @@ import * as _ from 'lodash'
 import { randomItem, PRINTABLE_CHARACTERS } from '../utils'
 import quotes from '../quotes.json'
 import * as actions from '../actions'
+import { IStoreState } from '../models'
 
 const RANDOM_LENGTH = 50
-
-export const initialState = {
-  mode: 'quote',
-  quoteObj: randomItem(quotes),
-  random: '',
-  code: '',
-  chars: 0,
-  errorPercent: 0,
-}
-
-export interface IStoreState {
-  mode: string,
-  quoteObj: object,
-  random: string,
-  code: string,
-  chars: number,
-  errorPercent: number,
-}
 
 export type Actions = ActionType<typeof actions>
 

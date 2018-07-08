@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import StatsBar from '../components/StatsBar'
-import { IStoreState } from '../reducers'
+import { IStoreState } from '../models'
 
 const matchStateToProps = (state: IStoreState) => {
   return {

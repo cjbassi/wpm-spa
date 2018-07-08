@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import App from '../components/App'
-import { IStoreState } from '../reducers'
+import { IStoreState } from '../models'
 
 const mapStateToProps = (state: IStoreState) => {
   return {
