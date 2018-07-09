@@ -1,6 +1,6 @@
 import * as _ from 'lodash'
 import { ActionType } from 'typesafe-actions';
-import { PRINTABLE_CHARACTERS, RANDOM_LENGTH } from './constants'
+import { PRINTABLE_CHARACTERS, RANDOM_LENGTH, Mode, ActionName } from './constants'
 import quotes from './quotes.json'
 import * as actions from './actions'
 import { IStoreState } from './models'
@@ -9,23 +9,23 @@ export type Action = ActionType<typeof actions>
 
 export function rootReducer(state: IStoreState, action: Action): IStoreState {
   switch (action.type) {
-    case 'NEW_TEXT':
+    case ActionName.newText:
       let text
       let author = null, context = null
       const mode = (action.payload.mode === null) ? state.mode : action.payload.mode
       switch (mode) {
-        case 'quote':
+        case Mode.quote:
           [author, context, text] = _.sample(quotes)
           break
-        case 'random':
+        case Mode.random:
           text = _.range(RANDOM_LENGTH)
             .map(() => _.sample(PRINTABLE_CHARACTERS))
             .join('')
           break
-        case 'code':
+        case Mode.code:
           text = ''
           break
-        case 'repeated-words':
+        case Mode.repeatedWords:
           text = _.range(RANDOM_LENGTH)
             .map(() => _.sample(action.payload.words))
             .join(' ')
@@ -43,13 +43,13 @@ export function rootReducer(state: IStoreState, action: Action): IStoreState {
         mode,
       }
 
-    case 'CHANGE_CHARS_TYPED':
+    case ActionName.changeCharsTypes:
       return {
         ...state,
         chars: action.payload.chars,
       }
 
-    case 'CHANGE_ERROR_PERCENT':
+    case ActionName.changeErrorPercent:
       return {
         ...state,
         errorPercent: action.payload.errorPercent,

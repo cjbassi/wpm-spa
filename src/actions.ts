@@ -1,7 +1,8 @@
 import { action } from 'typesafe-actions'
+import { ActionName } from './constants'
 
-export const changeCharsTyped = (chars: number) => action('CHANGE_CHARS_TYPED', { chars })
+export const changeCharsTyped = (chars: number) => action(ActionName.changeCharsTypes, { chars })
 
-export const newText = (mode?: string, words?: string[]) => action('NEW_TEXT', { mode, words })
+export const newText = (mode?: string, words?: string[]) => action(ActionName.newText, { mode, words })
 
-export const changeErrorPercent = (errorPercent: number) => action('CHANGE_ERROR_PERCENT', { errorPercent })
+export const changeErrorPercent = (errorPercent: number) => action(ActionName.changeErrorPercent, { errorPercent })

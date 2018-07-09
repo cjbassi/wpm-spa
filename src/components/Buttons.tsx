@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { Mode } from '../constants'
 
 interface IButtonProps {
   newText: (mode?: string, words?: string[]) => any;
@@ -28,7 +29,7 @@ export default class Button extends React.Component<IButtonProps,IButtonState> {
   }
 
   private handleSubmit = (event: any): void => {
-    this.props.newText('repeated-words', this.state.input.split(' '))
+    this.props.newText(Mode.repeatedWords, this.state.input.split(' '))
     event.preventDefault()
   }
 
@@ -51,11 +52,11 @@ export default class Button extends React.Component<IButtonProps,IButtonState> {
     const { ref1, ref2, ref3, ref4, repeatedWordsMode } = this.state
     return (
       <div>
-        {this.renderModeButton(ref1, 'quote')}
-        {this.renderModeButton(ref2, 'random')}
-        {this.renderModeButton(ref3, 'code')}
+        {this.renderModeButton(ref1, Mode.quote)}
+        {this.renderModeButton(ref2, Mode.random)}
+        {this.renderModeButton(ref3, Mode.code)}
         <button ref={ref4} onClick={() => {this.setState({repeatedWordsMode: !this.state.repeatedWordsMode}); ref4.current.blur()}}>
-          repeated-words
+          {Mode.repeatedWords}
         </button>
         {repeatedWordsMode &&
           <div style={{ display: 'inline' }}>
