@@ -2,26 +2,26 @@ import * as React from 'react'
 import { Mode } from '../constants'
 
 interface IButtonProps {
-  newText: (mode?: string, words?: string[]) => any;
+  newText: (mode?: string, words?: string[]) => any
 }
 
 interface IButtonState {
-  ref1: any;
-  ref2: any;
-  ref3: any;
-  ref4: any;
-  repeatedWordsMode: boolean;
-  input: string;
+  ref1: any
+  ref2: any
+  ref3: any
+  ref4: any
+  repeatedWordsMode: boolean
+  input: string
 }
 
-export default class Button extends React.Component<IButtonProps,IButtonState> {
+export default class Button extends React.Component<IButtonProps, IButtonState> {
   public readonly state: IButtonState = {
+    input: '',
     ref1: React.createRef(),
     ref2: React.createRef(),
     ref3: React.createRef(),
     ref4: React.createRef(),
     repeatedWordsMode: false,
-    input: '',
   }
 
   private handleChange = (event: any): void => {
@@ -38,8 +38,8 @@ export default class Button extends React.Component<IButtonProps,IButtonState> {
       <button
         ref={ref}
         onClick={() => {
-          this.setState({ repeatedWordsMode: false });
-          this.props.newText(mode);
+          this.setState({ repeatedWordsMode: false })
+          this.props.newText(mode)
           ref.current.blur()
         }}
       >
@@ -55,18 +55,28 @@ export default class Button extends React.Component<IButtonProps,IButtonState> {
         {this.renderModeButton(ref1, Mode.quote)}
         {this.renderModeButton(ref2, Mode.random)}
         {this.renderModeButton(ref3, Mode.code)}
-        <button ref={ref4} onClick={() => {this.setState({repeatedWordsMode: !this.state.repeatedWordsMode}); ref4.current.blur()}}>
+        <button
+          ref={ref4}
+          onClick={() => {
+            this.setState({ repeatedWordsMode: !this.state.repeatedWordsMode })
+            ref4.current.blur()
+          }}
+        >
           {Mode.repeatedWords}
         </button>
-        {repeatedWordsMode &&
+        {repeatedWordsMode && (
           <div style={{ display: 'inline' }}>
             {' '}
-          <form style={{ display: 'inline' }} onSubmit={this.handleSubmit}>
-            <input type='text' value={this.state.input} onChange={this.handleChange} />
-            <input type='submit' value='Submit' />
-          </form>
+            <form style={{ display: 'inline' }} onSubmit={this.handleSubmit}>
+              <input
+                type='text'
+                value={this.state.input}
+                onChange={this.handleChange}
+              />
+              <input type='submit' value='Submit' />
+            </form>
           </div>
-        }
+        )}
       </div>
     )
   }

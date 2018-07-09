@@ -12,5 +12,5 @@ export enum Mode {
 export enum ActionName {
   newText = 'NEW_TEXT',
   changeCharsTypes = 'CHANGE_CHARS_TYPED',
-  changeErrorPercent = 'CHANGE_ERROR_PERCENT'
+  changeErrorPercent = 'CHANGE_ERROR_PERCENT',
 }

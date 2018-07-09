@@ -1,11 +1,11 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
-import { createStore } from 'redux'
 import { Provider } from 'react-redux'
-import { rootReducer } from './reducers'
+import { createStore } from 'redux'
 import App from './containers/App'
+import { initialState, IStoreState } from './models'
+import { rootReducer } from './reducers'
 import registerServiceWorker from './registerServiceWorker'
-import { IStoreState, initialState } from './models'
 
 const store = createStore<IStoreState, any, any, any>(rootReducer, initialState)
 

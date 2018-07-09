@@ -1,13 +1,13 @@
 import * as React from 'react'
 import keydown from 'react-keydown'
+import Buttons from '../containers/Buttons'
 import Info from '../containers/SourceTextInfo'
 import Stats from '../containers/StatsBar'
 import Typing from '../containers/Typing'
-import Buttons from '../containers/Buttons'
 
 interface IAppProps {
-  author: string | null;
-  keydown?: any;
+  author: string | null
+  keydown?: any
 }
 
 @keydown
@@ -24,13 +24,13 @@ export default class App extends React.Component<IAppProps> {
         <Stats />
         <br />
         <Typing keydown={keydown} />
-          {(author !== null) &&
-            <div>
-              <br />
-              <Info />
-            </div>
-      }
-      </div >
+        {author !== null && (
+          <div>
+            <br />
+            <Info />
+          </div>
+        )}
+      </div>
     )
   }
 }

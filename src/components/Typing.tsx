@@ -7,20 +7,20 @@ const errorColor = 'red'
 const font = '"Courier New", Courier, monospace'
 
 interface ITypingProps {
-  text: string;
-  newText: () => any;
-  keydown: any;
-  changeCharsTyped: (chars: number) => any;
-  changeErrorPercent: (error: number) => any;
+  text: string
+  newText: () => any
+  keydown: any
+  changeCharsTyped: (chars: number) => any
+  changeErrorPercent: (error: number) => any
 }
 
 interface ITypingState {
-  cursor: number;
-  error: null | number;
-  errors: number;
+  cursor: number
+  error: null | number
+  errors: number
 }
 
-export default class Typing extends React.Component<ITypingProps,ITypingState> {
+export default class Typing extends React.Component<ITypingProps, ITypingState> {
   public readonly state: ITypingState = {
     cursor: 0,
     error: null,
@@ -38,11 +38,11 @@ export default class Typing extends React.Component<ITypingProps,ITypingState> {
         if ((error === null) && (keydown.event.key !== text[cursor])) {
           error = cursor
           errors += 1
-          changeErrorPercent(100*(errors/text.length))
+          changeErrorPercent(100 * (errors / text.length))
         }
-        cursor = cursor+1
+        cursor += 1
         // start a new session if we reach the end without any errors
-        if ((cursor === text.length) && (error === null))  {
+        if ((cursor === text.length) && (error === null)) {
           newText()
           cursor = 0
           error = null
@@ -50,7 +50,7 @@ export default class Typing extends React.Component<ITypingProps,ITypingState> {
         }
         // make sure the cursor doesn't go more than 1 past the length if we finish a session with errors
         if (cursor > text.length) {
-          cursor-=1
+          cursor -= 1
         }
         this.setState({
           cursor,
@@ -59,7 +59,7 @@ export default class Typing extends React.Component<ITypingProps,ITypingState> {
         })
       } else if (keydown.event.key === 'Backspace') {
         if (cursor > 0) {
-          cursor = cursor-1
+          cursor -= 1
           // checks to see if we can set error to null if we backspaced over it
           error = (error === null) ? null : (cursor > error) ? error : null
           this.setState({
@@ -84,31 +84,31 @@ export default class Typing extends React.Component<ITypingProps,ITypingState> {
     const { text } = this.props
     const { cursor, error } = this.state
     return (
-      <div style={{fontFamily: font}}>
+      <div style={{ fontFamily: font }}>
         {(error === null) ? (
           <div>
-            <mark style={{color: `${typedColor}`, background: '#FFFFFF'}}>
-              {text.slice(0,cursor)}
+            <mark style={{ color: `${typedColor}`, background: '#FFFFFF' }}>
+              {text.slice(0, cursor)}
             </mark>
-            <mark style={{backgroundColor: `${cursorColor}`}}>
+            <mark style={{ backgroundColor: `${cursorColor}` }}>
               {text[cursor]}
             </mark>
-            {text.slice(cursor+1,text.length)}
+            {text.slice(cursor + 1, text.length)}
           </div>
         ) : (
-          <div>
-            <mark style={{color: `${typedColor}`, background: '#FFFFFF'}}>
-              {text.slice(0,error)}
-            </mark>
-            <mark style={{backgroundColor: `${errorColor}`}}>
-              {text.slice(error,cursor)}
-            </mark>
-            <mark style={{backgroundColor: `${cursorColor}`}}>
-              {text[cursor]}
-            </mark>
-            {text.slice(cursor+1,text.length)}
-          </div>
-        )}
+            <div>
+              <mark style={{ color: `${typedColor}`, background: '#FFFFFF' }}>
+                {text.slice(0, error)}
+              </mark>
+              <mark style={{ backgroundColor: `${errorColor}` }}>
+                {text.slice(error, cursor)}
+              </mark>
+              <mark style={{ backgroundColor: `${cursorColor}` }}>
+                {text[cursor]}
+              </mark>
+              {text.slice(cursor + 1, text.length)}
+            </div>
+          )}
       </div>
     )
   }

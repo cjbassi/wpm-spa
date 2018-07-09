@@ -1,8 +1,8 @@
 import * as React from 'react'
 
 interface IInfoProps {
-  author: string;
-  context: string;
+  author: string
+  context: string
 }
 
 export default class Info extends React.Component<IInfoProps> {

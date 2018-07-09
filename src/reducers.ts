@@ -1,9 +1,9 @@
 import * as _ from 'lodash'
-import { ActionType } from 'typesafe-actions';
-import { PRINTABLE_CHARACTERS, RANDOM_LENGTH, Mode, ActionName } from './constants'
-import quotes from './quotes.json'
+import { ActionType } from 'typesafe-actions'
 import * as actions from './actions'
+import { ActionName, Mode, PRINTABLE_CHARACTERS, RANDOM_LENGTH } from './constants'
 import { IStoreState } from './models'
+import quotes from './quotes.json'
 
 export type Action = ActionType<typeof actions>
 
@@ -11,7 +11,8 @@ export function rootReducer(state: IStoreState, action: Action): IStoreState {
   switch (action.type) {
     case ActionName.newText:
       let text
-      let author = null, context = null
+      let author = null
+      let context = null
       const mode = (action.payload.mode === null) ? state.mode : action.payload.mode
       switch (mode) {
         case Mode.quote:
@@ -35,12 +36,12 @@ export function rootReducer(state: IStoreState, action: Action): IStoreState {
       }
       return {
         ...state,
-        chars: 0,
-        errorPercent: 0,
-        text,
         author,
+        chars: 0,
         context,
+        errorPercent: 0,
         mode,
+        text,
       }
 
     case ActionName.changeCharsTypes:

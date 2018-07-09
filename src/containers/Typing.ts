@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
-import Typing from '../components/Typing'
 import { Dispatch } from 'redux'
-import { newText, changeCharsTyped, changeErrorPercent } from '../actions'
+import { changeCharsTyped, changeErrorPercent, newText } from '../actions'
+import Typing from '../components/Typing'
 import { IStoreState } from '../models'
 
 const matchStateToProps = (state: IStoreState) => {
@@ -12,15 +12,15 @@ const matchStateToProps = (state: IStoreState) => {
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
-    newText: () => {
-      dispatch(newText())
-    },
     changeCharsTyped: (chars: number) => {
       dispatch(changeCharsTyped(chars))
     },
     changeErrorPercent: (percent: number) => {
       dispatch(changeErrorPercent(percent))
-    }
+    },
+    newText: () => {
+      dispatch(newText())
+    },
   }
 }
 

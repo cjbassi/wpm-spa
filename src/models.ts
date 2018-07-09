@@ -13,10 +13,10 @@ export interface IStoreState {
 const [author, context, text] = _.sample(quotes)
 
 export const initialState = {
+  author,
+  chars: 0,
+  context,
+  errorPercent: 0,
   mode: 'quote',
   text,
-  author,
-  context,
-  chars: 0,
-  errorPercent: 0,
 }

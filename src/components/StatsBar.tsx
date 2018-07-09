@@ -1,27 +1,27 @@
 import * as React from 'react'
 
 interface IStatsProps {
-  chars: number;
-  errorPercent: number;
+  chars: number
+  errorPercent: number
 }
 
 interface IStatsState {
-  timer: any;
-  hundredths: number;
-  chars: number;
+  timer: any
+  hundredths: number
+  chars: number
 }
 
-export default class Stats extends React.Component<IStatsProps,IStatsState> {
+export default class Stats extends React.Component<IStatsProps, IStatsState> {
   public readonly state: IStatsState = {
-    timer: null,
-    hundredths: 0,
     chars: this.props.chars,
+    hundredths: 0,
+    timer: null,
   }
 
   private startTimer = () => {
     this.setState({
-      timer: setInterval(this.tick, 10),
       hundredths: 0,
+      timer: setInterval(this.tick, 10),
     })
   }
 
@@ -65,10 +65,10 @@ export default class Stats extends React.Component<IStatsProps,IStatsState> {
     const cps = (sec === 0) ? 0 : (chars / sec)
     return (
       <div>
-        {wpm.toFixed(0).padStart(3,'0')} wpm{' '}
-        {cps.toFixed(1).padStart(4,'0')} cps{' '}
-        {(100-errorPercent).toFixed(2).padStart(6,'0')}% acc{' '}
-        {sec.toFixed(1)}s
+        <span>{wpm.toFixed(0).padStart(3, '0')} wpm</span>
+        <span> {cps.toFixed(1).padStart(4, '0')} cps</span>
+        <span> {(100 - errorPercent).toFixed(2).padStart(6, '0')}% acc</span>
+        <span> {sec.toFixed(1)}s</span>
       </div>
     )
   }
