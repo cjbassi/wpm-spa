@@ -13,7 +13,7 @@ export function rootReducer(state: IStoreState, action: Action): IStoreState {
       let text
       let author = null
       let context = null
-      const mode = (action.payload.mode === null) ? state.mode : action.payload.mode
+      const mode = (action.payload.mode === undefined) ? state.mode : action.payload.mode
       switch (mode) {
         case Mode.quote:
           [author, context, text] = _.sample(quotes)
