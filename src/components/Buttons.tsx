@@ -24,11 +24,11 @@ export default class Button extends React.Component<IButtonProps, IButtonState> 
     repeatedWordsMode: false,
   }
 
-  private handleChange = (event: any): void => {
+  private handleChange = (event: any) => {
     this.setState({ input: event.target.value })
   }
 
-  private handleSubmit = (event: any): void => {
+  private handleSubmit = (event: any) => {
     this.props.newText(Mode.repeatedWords, this.state.input.split(' '))
     event.preventDefault()
   }

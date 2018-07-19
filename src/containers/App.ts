@@ -1,10 +1,10 @@
 import { connect } from 'react-redux'
 import App from '../components/App'
-import { IStoreState } from '../models'
+import { IStoreState } from '../store'
 
 const mapStateToProps = (state: IStoreState) => {
   return {
-    author: state.author,
+    author: state.textInfo.author,
   }
 }
 

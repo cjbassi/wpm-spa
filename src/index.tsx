@@ -1,16 +1,12 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
-import { createStore } from 'redux'
 import App from './containers/App'
-import { initialState, IStoreState } from './models'
-import { rootReducer } from './reducers'
 import registerServiceWorker from './registerServiceWorker'
-
-const store = createStore<IStoreState, any, any, any>(rootReducer, initialState)
+import Store from './store'
 
 ReactDOM.render(
-  <Provider store={store}>
+  <Provider store={Store}>
     <App />
   </Provider>,
   document.getElementById('root') as HTMLElement

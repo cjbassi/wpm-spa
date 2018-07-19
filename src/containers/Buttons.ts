@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import { Dispatch } from 'redux'
-import { newText } from '../actions'
+import { newText } from '../actions/actions'
 import Buttons from '../components/Buttons'
 
 const mapDispatchToProps = (dispatch: Dispatch) => {

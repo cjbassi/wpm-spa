@@ -8,10 +8,10 @@ const font = '"Courier New", Courier, monospace'
 
 interface ITypingProps {
   text: string
-  newText: () => any
+  newText: () => void
   keydown: any
-  changeCharsTyped: (chars: number) => any
-  changeErrorPercent: (error: number) => any
+  changeCharsTyped: (chars: number) => void
+  changeErrorPercent: (error: number) => void
 }
 
 interface ITypingState {
