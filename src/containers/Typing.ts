@@ -1,6 +1,10 @@
 import { connect } from 'react-redux'
 import { Dispatch } from 'redux'
-import { changeCharsTyped, changeErrorPercent, newText } from '../actions/actions'
+import {
+  changeCharsTyped,
+  changeErrorPercent,
+  newText,
+} from '../actions/actions'
 import Typing from '../components/Typing'
 import { IStoreState } from '../store'
 

@@ -60,9 +60,9 @@ export default class Stats extends React.Component<IStatsProps, IStatsState> {
   public render() {
     const { chars, hundredths } = this.state
     const { errorPercent } = this.props
-    const sec = (hundredths / 100)
-    const wpm = (sec === 0) ? 0 : (chars / 5) / (sec / 60)
-    const cps = (sec === 0) ? 0 : (chars / sec)
+    const sec = hundredths / 100
+    const wpm = sec === 0 ? 0 : chars / 5 / (sec / 60)
+    const cps = sec === 0 ? 0 : chars / sec
     return (
       <div>
         <span>{wpm.toFixed(0).padStart(3, '0')} wpm</span>

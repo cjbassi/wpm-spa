@@ -3,7 +3,10 @@ import ActionType from '../actions'
 import { ActionName } from '../constants'
 import { ITypingInfo } from '../store'
 
-export const changeCharsTyped = (state: number = 0, action: ActionType): number => {
+export const changeCharsTyped = (
+  state: number = 0,
+  action: ActionType,
+): number => {
   switch (action.type) {
     case ActionName.changeCharsTypes:
       return action.payload.charsTyped
@@ -12,7 +15,10 @@ export const changeCharsTyped = (state: number = 0, action: ActionType): number 
   }
 }
 
-export const changeErrorPercent = (state: number = 0, action: ActionType): number => {
+export const changeErrorPercent = (
+  state: number = 0,
+  action: ActionType,
+): number => {
   switch (action.type) {
     case ActionName.changeErrorPercent:
       return action.payload.errorPercent

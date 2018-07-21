@@ -9,6 +9,4 @@ const matchStateToProps = (state: IStoreState) => {
   }
 }
 
-export default connect(
-  matchStateToProps,
-)(StatsBar)
+export default connect(matchStateToProps)(StatsBar)

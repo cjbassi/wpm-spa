@@ -13,6 +13,10 @@
     "rules": {
         "jsx-no-lambda": false,
         "member-ordering": false,
-        "no-shadowed-variable": false
+        "no-shadowed-variable": false,
+        "semicolon": [true, "never"],
+        "trailing-comma": [true, {"multiline": "always", "singleline": "never"}],
+        "quotemark": [true, "single"],
+        "no-console": false
     }
 }

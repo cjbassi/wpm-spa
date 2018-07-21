@@ -9,6 +9,4 @@ const matchStateToProps = (state: IStoreState) => {
   }
 }
 
-export default connect(
-  matchStateToProps,
-)(SourceTextInfo)
+export default connect(matchStateToProps)(SourceTextInfo)

@@ -8,6 +8,4 @@ const mapStateToProps = (state: IStoreState) => {
   }
 }
 
-export default connect(
-  mapStateToProps,
-)(App)
+export default connect(mapStateToProps)(App)

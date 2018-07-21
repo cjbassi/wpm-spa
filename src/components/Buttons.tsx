@@ -14,7 +14,10 @@ interface IButtonState {
   input: string
 }
 
-export default class Button extends React.Component<IButtonProps, IButtonState> {
+export default class Button extends React.Component<
+  IButtonProps,
+  IButtonState
+> {
   public readonly state: IButtonState = {
     input: '',
     ref1: React.createRef(),

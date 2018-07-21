@@ -1,6 +1,11 @@
 import * as _ from 'lodash'
 import ActionType from '../actions'
-import { ActionName, Mode, PRINTABLE_CHARACTERS, RANDOM_LENGTH } from '../constants'
+import {
+  ActionName,
+  Mode,
+  PRINTABLE_CHARACTERS,
+  RANDOM_LENGTH,
+} from '../constants'
 import quotes from '../static/quotes.json'
 import { ITextInfo } from '../store'
 
@@ -15,7 +20,8 @@ export const newQuote = (): ITextInfo => {
 }
 
 export const newRandom = (): ITextInfo => {
-  const text = _.range(RANDOM_LENGTH)
+  const text = _
+    .range(RANDOM_LENGTH)
     .map(() => _.sample(PRINTABLE_CHARACTERS))
     .join('')
   return {
@@ -27,7 +33,8 @@ export const newRandom = (): ITextInfo => {
 }
 
 export const newRepeated = (words: string[] | undefined): ITextInfo => {
-  const text = _.range(RANDOM_LENGTH)
+  const text = _
+    .range(RANDOM_LENGTH)
     .map(() => _.sample(words))
     .join(' ')
   return {
@@ -47,11 +54,14 @@ export const newCode = (): ITextInfo => {
   }
 }
 
-
-export default (state: ITextInfo = newQuote(), action: ActionType): ITextInfo => {
+export default (
+  state: ITextInfo = newQuote(),
+  action: ActionType,
+): ITextInfo => {
   switch (action.type) {
     case ActionName.newText:
-      const mode = (action.payload.mode === undefined) ? state.mode : action.payload.mode
+      const mode =
+        action.payload.mode === undefined ? state.mode : action.payload.mode
       switch (mode) {
         case Mode.quote:
           return newQuote()
