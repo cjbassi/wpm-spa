@@ -10,6 +10,8 @@ interface IButtonState {
   ref2: any
   ref3: any
   ref4: any
+  ref5: any
+  ref6: any
   repeatedWordsMode: boolean
   input: string
 }
@@ -17,13 +19,15 @@ interface IButtonState {
 export default class Button extends React.Component<
   IButtonProps,
   IButtonState
-> {
+  > {
   public readonly state: IButtonState = {
     input: '',
     ref1: React.createRef(),
     ref2: React.createRef(),
     ref3: React.createRef(),
     ref4: React.createRef(),
+    ref5: React.createRef(),
+    ref6: React.createRef(),
     repeatedWordsMode: false,
   }
 
@@ -52,14 +56,16 @@ export default class Button extends React.Component<
   }
 
   public render() {
-    const { ref1, ref2, ref3, ref4, repeatedWordsMode } = this.state
+    const { ref1, ref2, ref3, ref4, ref5, ref6, repeatedWordsMode } = this.state
     return (
       <div>
         {this.renderModeButton(ref1, Mode.quote)}
-        {this.renderModeButton(ref2, Mode.random)}
-        {this.renderModeButton(ref3, Mode.code)}
+        {this.renderModeButton(ref2, Mode.code)}
+        {this.renderModeButton(ref3, Mode.random)}
+        {this.renderModeButton(ref4, Mode.symbols)}
+        {this.renderModeButton(ref5, Mode.numbers)}
         <button
-          ref={ref4}
+          ref={ref6}
           onClick={() => {
             this.setState({ repeatedWordsMode: !this.state.repeatedWordsMode })
             ref4.current.blur()

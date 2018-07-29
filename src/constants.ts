@@ -2,12 +2,18 @@ export const PRINTABLE_CHARACTERS = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFG
   '',
 )
 
+export const SYMBOLS = ',./<>?;:\'"[]\\{}|`~!@#$%^&*()-_=+'.split('')
+
+export const NUMBERS = '0123456789'.split('')
+
 export const RANDOM_LENGTH = 50
 
 export enum Mode {
   quote = 'quote',
-  random = 'random',
   code = 'code',
+  random = 'random',
+  symbols = 'symbols',
+  numbers = 'numbers',
   repeatedWords = 'repeated-words',
 }
 
