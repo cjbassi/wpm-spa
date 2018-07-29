@@ -10,7 +10,7 @@ import quotes from '../static/quotes.json'
 import { ITextInfo } from '../store'
 
 export const newQuote = (): ITextInfo => {
-  const [author, context, text] = _.sample(quotes)
+  const { author, context, text } = _.sample(quotes)
   return {
     author,
     context,
