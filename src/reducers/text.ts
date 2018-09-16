@@ -31,8 +31,7 @@ export const newCode = (): ITextInfo => {
 }
 
 export const newRandom = (): ITextInfo => {
-  const text = _
-    .range(RANDOM_LENGTH)
+  const text = _.range(RANDOM_LENGTH)
     .map(() => _.sample(PRINTABLE_CHARACTERS))
     .join('')
   return {
@@ -44,8 +43,7 @@ export const newRandom = (): ITextInfo => {
 }
 
 export const newSymbols = (): ITextInfo => {
-  const text = _
-    .range(RANDOM_LENGTH)
+  const text = _.range(RANDOM_LENGTH)
     .map(() => _.sample(SYMBOLS))
     .join('')
   return {
@@ -57,8 +55,7 @@ export const newSymbols = (): ITextInfo => {
 }
 
 export const newNumbers = (): ITextInfo => {
-  const text = _
-    .range(RANDOM_LENGTH)
+  const text = _.range(RANDOM_LENGTH)
     .map(() => _.sample(NUMBERS))
     .join('')
   return {
@@ -70,8 +67,7 @@ export const newNumbers = (): ITextInfo => {
 }
 
 export const newRepeated = (words: string[] | undefined): ITextInfo => {
-  const text = _
-    .range(RANDOM_LENGTH)
+  const text = _.range(RANDOM_LENGTH)
     .map(() => _.sample(words))
     .join(' ')
   return {

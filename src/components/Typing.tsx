@@ -20,7 +20,10 @@ interface ITypingState {
   errors: number
 }
 
-export default class Typing extends React.Component<ITypingProps, ITypingState> {
+export default class Typing extends React.Component<
+  ITypingProps,
+  ITypingState
+> {
   public readonly state: ITypingState = {
     cursor: 0,
     error: null,
@@ -35,14 +38,14 @@ export default class Typing extends React.Component<ITypingProps, ITypingState> 
       // if a printable character was just typed
       if (PRINTABLE_CHARACTERS.includes(keydown.event.key)) {
         // set error to current cursor position if we typed an error without any previous errors
-        if ((error === null) && (keydown.event.key !== text[cursor])) {
+        if (error === null && keydown.event.key !== text[cursor]) {
           error = cursor
           errors += 1
           changeErrorPercent(100 * (errors / text.length))
         }
         cursor += 1
         // start a new session if we reach the end without any errors
-        if ((cursor === text.length) && (error === null)) {
+        if (cursor === text.length && error === null) {
           newText()
           cursor = 0
           error = null
@@ -61,14 +64,14 @@ export default class Typing extends React.Component<ITypingProps, ITypingState> 
         if (cursor > 0) {
           cursor -= 1
           // checks to see if we can set error to null if we backspaced over it
-          error = (error === null) ? null : (cursor > error) ? error : null
+          error = error === null ? null : cursor > error ? error : null
           this.setState({
             cursor,
             error,
           })
         }
       }
-      const chars = (error === null) ? cursor : error
+      const chars = error === null ? cursor : error
       changeCharsTyped(chars)
     } else {
       if (prevProps.text !== text) {
@@ -85,7 +88,7 @@ export default class Typing extends React.Component<ITypingProps, ITypingState> 
     const { cursor, error } = this.state
     return (
       <div style={{ fontFamily: font }}>
-        {(error === null) ? (
+        {error === null ? (
           <div>
             <mark style={{ color: `${typedColor}`, background: '#FFFFFF' }}>
               {text.slice(0, cursor)}
@@ -96,19 +99,19 @@ export default class Typing extends React.Component<ITypingProps, ITypingState> 
             {text.slice(cursor + 1, text.length)}
           </div>
         ) : (
-            <div>
-              <mark style={{ color: `${typedColor}`, background: '#FFFFFF' }}>
-                {text.slice(0, error)}
-              </mark>
-              <mark style={{ backgroundColor: `${errorColor}` }}>
-                {text.slice(error, cursor)}
-              </mark>
-              <mark style={{ backgroundColor: `${cursorColor}` }}>
-                {text[cursor]}
-              </mark>
-              {text.slice(cursor + 1, text.length)}
-            </div>
-          )}
+          <div>
+            <mark style={{ color: `${typedColor}`, background: '#FFFFFF' }}>
+              {text.slice(0, error)}
+            </mark>
+            <mark style={{ backgroundColor: `${errorColor}` }}>
+              {text.slice(error, cursor)}
+            </mark>
+            <mark style={{ backgroundColor: `${cursorColor}` }}>
+              {text[cursor]}
+            </mark>
+            {text.slice(cursor + 1, text.length)}
+          </div>
+        )}
       </div>
     )
   }

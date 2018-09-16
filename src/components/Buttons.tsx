@@ -19,7 +19,7 @@ interface IButtonState {
 export default class Button extends React.Component<
   IButtonProps,
   IButtonState
-  > {
+> {
   public readonly state: IButtonState = {
     input: '',
     ref1: React.createRef(),
@@ -56,7 +56,15 @@ export default class Button extends React.Component<
   }
 
   public render() {
-    const { ref1, ref2, ref3, ref4, ref5, ref6, repeatedWordsMode } = this.state
+    const {
+      ref1,
+      ref2,
+      ref3,
+      ref4,
+      ref5,
+      ref6,
+      repeatedWordsMode,
+    } = this.state
     return (
       <div>
         {this.renderModeButton(ref1, Mode.quote)}
