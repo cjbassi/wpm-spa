@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux'
+
 import ActionType from '../actions'
 import { ActionName } from '../constants'
 import { ITypingInfo } from '../store'

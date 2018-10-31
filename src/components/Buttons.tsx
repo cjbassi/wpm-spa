@@ -1,4 +1,8 @@
 import * as React from 'react'
+import { connect } from 'react-redux'
+import { Dispatch } from 'redux'
+
+import { newText } from '../actions/actions'
 import { Mode } from '../constants'
 
 interface IButtonProps {
@@ -16,10 +20,7 @@ interface IButtonState {
   input: string
 }
 
-export default class Button extends React.Component<
-  IButtonProps,
-  IButtonState
-  > {
+class Buttons extends React.Component<IButtonProps, IButtonState> {
   public readonly state: IButtonState = {
     input: '',
     ref1: React.createRef(),
@@ -56,7 +57,15 @@ export default class Button extends React.Component<
   }
 
   public render() {
-    const { ref1, ref2, ref3, ref4, ref5, ref6, repeatedWordsMode } = this.state
+    const {
+      ref1,
+      ref2,
+      ref3,
+      ref4,
+      ref5,
+      ref6,
+      repeatedWordsMode,
+    } = this.state
     return (
       <div>
         {this.renderModeButton(ref1, Mode.quote)}
@@ -90,3 +99,16 @@ export default class Button extends React.Component<
     )
   }
 }
+
+const mapDispatchToProps = (dispatch: Dispatch) => {
+  return {
+    newText: (mode?: string, words?: string[]) => {
+      dispatch(newText(mode, words))
+    },
+  }
+}
+
+export default connect(
+  null,
+  mapDispatchToProps,
+)(Buttons)

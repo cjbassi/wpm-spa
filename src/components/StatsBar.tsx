@@ -1,4 +1,7 @@
 import * as React from 'react'
+import { connect } from 'react-redux'
+
+import { IStoreState } from '../store'
 
 interface IStatsProps {
   chars: number
@@ -11,7 +14,7 @@ interface IStatsState {
   chars: number
 }
 
-export default class Stats extends React.Component<IStatsProps, IStatsState> {
+class StatsBar extends React.Component<IStatsProps, IStatsState> {
   public readonly state: IStatsState = {
     chars: this.props.chars,
     hundredths: 0,
@@ -73,3 +76,12 @@ export default class Stats extends React.Component<IStatsProps, IStatsState> {
     )
   }
 }
+
+const matchStateToProps = (state: IStoreState) => {
+  return {
+    chars: state.typingInfo.charsTyped,
+    errorPercent: state.typingInfo.errorPercent,
+  }
+}
+
+export default connect(matchStateToProps)(StatsBar)

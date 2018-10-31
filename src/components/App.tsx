@@ -1,9 +1,12 @@
 import * as React from 'react'
 import keydown from 'react-keydown'
-import Buttons from '../containers/Buttons'
-import Info from '../containers/SourceTextInfo'
-import Stats from '../containers/StatsBar'
-import Typing from '../containers/Typing'
+import { connect } from 'react-redux'
+
+import Buttons from '../components/Buttons'
+import Info from '../components/SourceTextInfo'
+import Stats from '../components/StatsBar'
+import Typing from '../components/Typing'
+import { IStoreState } from '../store'
 
 interface IAppProps {
   author: string | null
@@ -11,7 +14,7 @@ interface IAppProps {
 }
 
 @keydown
-export default class App extends React.Component<IAppProps> {
+class App extends React.Component<IAppProps> {
   public render() {
     const { author, keydown } = this.props
     return (
@@ -34,3 +37,11 @@ export default class App extends React.Component<IAppProps> {
     )
   }
 }
+
+const mapStateToProps = (state: IStoreState) => {
+  return {
+    author: state.textInfo.author,
+  }
+}
+
+export default connect(mapStateToProps)(App)

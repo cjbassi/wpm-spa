@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux'
+
 import ActionType from '../actions'
 import { IStoreState } from '../store'
 import textInfo from './text'

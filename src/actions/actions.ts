@@ -1,4 +1,5 @@
 import { action } from 'typesafe-actions'
+
 import { ActionName } from '../constants'
 
 export const newText = (mode?: string, words?: string[]) =>
