@@ -13,10 +13,11 @@
     "rules": {
         "jsx-no-lambda": false,
         "member-ordering": false,
-        "no-shadowed-variable": false,
-        "semicolon": [true, "never"],
-        "trailing-comma": [true, {"multiline": "always", "singleline": "never"}],
+        "no-console": false,
+        "object-literal-sort-keys": false,
+        "only-arrow-functions": [true, "allow-declarations"],
         "quotemark": [true, "single"],
-        "no-console": false
+        "semicolon": [true, "never"],
+        "trailing-comma": [true, {"multiline": "always", "singleline": "never"}]
     }
 }
