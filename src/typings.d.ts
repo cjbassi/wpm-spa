@@ -1,4 +1,4 @@
-declare module 'react-keydown'
+declare module 'react-keydown';
 
 declare module "*.json" {
     const value: any;
