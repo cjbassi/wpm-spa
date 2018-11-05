@@ -3,12 +3,12 @@ import { connect } from 'react-redux'
 
 import { IStoreState } from '../store'
 
-interface IInfoProps {
+interface ITextInfoProps {
   author: string | null
   context: string | null
 }
 
-class SourceTextInfo extends React.Component<IInfoProps> {
+class TextInfo extends React.Component<ITextInfoProps> {
   public render() {
     const { author, context } = this.props
     return (
@@ -26,4 +26,4 @@ const matchStateToProps = (state: IStoreState) => {
   }
 }
 
-export default connect(matchStateToProps)(SourceTextInfo)
+export default connect(matchStateToProps)(TextInfo)

@@ -3,10 +3,10 @@ import keydown from 'react-keydown'
 import { connect } from 'react-redux'
 
 import Buttons from '../components/Buttons'
-import Info from '../components/SourceTextInfo'
 import Stats from '../components/StatsBar'
 import Typing from '../components/Typing'
 import { IStoreState } from '../store'
+import TextInfo from './TextInfo'
 
 interface IAppProps {
   author: string | null
@@ -30,7 +30,7 @@ class App extends React.Component<IAppProps> {
         {author !== null && (
           <div>
             <br />
-            <Info />
+            <TextInfo />
           </div>
         )}
       </div>
