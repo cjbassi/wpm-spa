@@ -125,7 +125,7 @@ class Typing extends React.Component<ITypingProps, ITypingState> {
 
 const matchStateToProps = (state: IStoreState) => {
   return {
-    text: state.textInfo.text,
+    text: state.textData.text,
   }
 }
 

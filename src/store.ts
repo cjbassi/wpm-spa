@@ -2,21 +2,21 @@ import { createStore } from 'redux'
 
 import rootReducer from './reducers'
 
-export interface ITextInfo {
+export interface ITextData {
   mode: string
   text: string
   author: string | null
   context: string | null
 }
 
-export interface ITypingInfo {
+export interface ITypingData {
   charsTyped: number
   errorPercent: number
 }
 
 export interface IStoreState {
-  textInfo: ITextInfo
-  typingInfo: ITypingInfo
+  textData: ITextData
+  typingData: ITypingData
 }
 
 export default createStore<IStoreState, any, any, any>(rootReducer)

@@ -6,7 +6,7 @@ import { newText } from '../actions/actions'
 import { Mode } from '../constants'
 
 interface IButtonProps {
-  newText: (mode?: string, words?: string[]) => any
+  newText: (mode?: string, words?: string[]) => void
 }
 
 interface IButtonState {

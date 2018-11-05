@@ -10,9 +10,9 @@ import {
   SYMBOLS,
 } from '../constants'
 import quotes from '../static/quotes.json'
-import { ITextInfo } from '../store'
+import { ITextData } from '../store'
 
-export const newQuote = (): ITextInfo => {
+export const newQuote = (): ITextData => {
   const { author, context, text } = _.sample(quotes)
   return {
     author,
@@ -22,7 +22,7 @@ export const newQuote = (): ITextInfo => {
   }
 }
 
-export const newCode = (): ITextInfo => {
+export const newCode = (): ITextData => {
   return {
     author: null,
     context: null,
@@ -31,7 +31,7 @@ export const newCode = (): ITextInfo => {
   }
 }
 
-export const newRandom = (): ITextInfo => {
+export const newRandom = (): ITextData => {
   const text = _.range(RANDOM_LENGTH)
     .map(() => _.sample(PRINTABLE_CHARACTERS))
     .join('')
@@ -43,7 +43,7 @@ export const newRandom = (): ITextInfo => {
   }
 }
 
-export const newSymbols = (): ITextInfo => {
+export const newSymbols = (): ITextData => {
   const text = _.range(RANDOM_LENGTH)
     .map(() => _.sample(SYMBOLS))
     .join('')
@@ -55,7 +55,7 @@ export const newSymbols = (): ITextInfo => {
   }
 }
 
-export const newNumbers = (): ITextInfo => {
+export const newNumbers = (): ITextData => {
   const text = _.range(RANDOM_LENGTH)
     .map(() => _.sample(NUMBERS))
     .join('')
@@ -67,7 +67,7 @@ export const newNumbers = (): ITextInfo => {
   }
 }
 
-export const newRepeated = (words: string[] | undefined): ITextInfo => {
+export const newRepeated = (words: string[] | undefined): ITextData => {
   const text = _.range(RANDOM_LENGTH)
     .map(() => _.sample(words))
     .join(' ')
@@ -80,9 +80,9 @@ export const newRepeated = (words: string[] | undefined): ITextInfo => {
 }
 
 export default (
-  state: ITextInfo = newQuote(),
+  state: ITextData = newQuote(),
   action: ActionType,
-): ITextInfo => {
+): ITextData => {
   switch (action.type) {
     case ActionName.newText:
       const mode =

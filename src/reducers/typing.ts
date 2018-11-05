@@ -2,7 +2,7 @@ import { combineReducers } from 'redux'
 
 import ActionType from '../actions'
 import { ActionName } from '../constants'
-import { ITypingInfo } from '../store'
+import { ITypingData } from '../store'
 
 export const changeCharsTyped = (
   state: number = 0,
@@ -28,7 +28,7 @@ export const changeErrorPercent = (
   }
 }
 
-export default combineReducers<ITypingInfo, ActionType>({
+export default combineReducers<ITypingData, ActionType>({
   charsTyped: changeCharsTyped,
   errorPercent: changeErrorPercent,
 })

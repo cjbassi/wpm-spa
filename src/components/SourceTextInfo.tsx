@@ -21,8 +21,8 @@ class SourceTextInfo extends React.Component<IInfoProps> {
 
 const matchStateToProps = (state: IStoreState) => {
   return {
-    author: state.textInfo.author,
-    context: state.textInfo.context,
+    author: state.textData.author,
+    context: state.textData.context,
   }
 }
 

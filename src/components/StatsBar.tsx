@@ -79,8 +79,8 @@ class StatsBar extends React.Component<IStatsProps, IStatsState> {
 
 const matchStateToProps = (state: IStoreState) => {
   return {
-    chars: state.typingInfo.charsTyped,
-    errorPercent: state.typingInfo.errorPercent,
+    chars: state.typingData.charsTyped,
+    errorPercent: state.typingData.errorPercent,
   }
 }
 

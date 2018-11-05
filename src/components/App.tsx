@@ -40,7 +40,7 @@ class App extends React.Component<IAppProps> {
 
 const mapStateToProps = (state: IStoreState) => {
   return {
-    author: state.textInfo.author,
+    author: state.textData.author,
   }
 }
 
