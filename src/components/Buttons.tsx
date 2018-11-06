@@ -1,15 +1,21 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 import { Dispatch } from 'redux'
+import styled from 'styled-components'
 
 import { newText } from '../actions/actions'
 import { Mode } from '../constants'
+
+const InlineCSS = styled.div`
+  display: inline;
+`
 
 interface IButtonProps {
   newText: (mode?: string, words?: string[]) => void
 }
 
 interface IButtonState {
+  input: string
   ref1: any
   ref2: any
   ref3: any
@@ -17,7 +23,6 @@ interface IButtonState {
   ref5: any
   ref6: any
   repeatedWordsMode: boolean
-  input: string
 }
 
 class Buttons extends React.Component<IButtonProps, IButtonState> {
@@ -58,6 +63,7 @@ class Buttons extends React.Component<IButtonProps, IButtonState> {
 
   public render() {
     const {
+      input,
       ref1,
       ref2,
       ref3,
@@ -76,24 +82,20 @@ class Buttons extends React.Component<IButtonProps, IButtonState> {
         <button
           ref={ref6}
           onClick={() => {
-            this.setState({ repeatedWordsMode: !this.state.repeatedWordsMode })
+            this.setState({ repeatedWordsMode: !repeatedWordsMode })
             ref4.current.blur()
           }}
         >
           {Mode.repeatedWords}
         </button>
         {repeatedWordsMode && (
-          <div style={{ display: 'inline' }}>
+          <InlineCSS>
             {' '}
             <form style={{ display: 'inline' }} onSubmit={this.handleSubmit}>
-              <input
-                type='text'
-                value={this.state.input}
-                onChange={this.handleChange}
-              />
+              <input type='text' value={input} onChange={this.handleChange} />
               <input type='submit' value='Submit' />
             </form>
-          </div>
+          </InlineCSS>
         )}
       </div>
     )

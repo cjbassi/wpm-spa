@@ -13,7 +13,8 @@ import quotes from '../static/quotes.json'
 import { ITextData } from '../store'
 
 export const newQuote = (): ITextData => {
-  const { author, context, text } = (_.sample(quotes) as any)
+  const { author, context, text } = _.sample(quotes)!
+  console.log(text)
   return {
     author,
     context,

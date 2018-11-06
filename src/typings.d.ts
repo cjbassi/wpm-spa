@@ -1,6 +1,15 @@
-declare module 'react-keydown';
+declare module 'react-keydown'
 
-declare module "*.json" {
-    const value: any;
-    export default value;
+interface IQuote {
+  author: string
+  context: string
+  text: string
+}
+
+interface IQuotes {
+  [key: number]: IQuote
+}
+
+declare module 'quotes.json' {
+  export default IQuotes
 }

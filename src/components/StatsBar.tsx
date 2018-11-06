@@ -1,3 +1,4 @@
+import produce from 'immer'
 import * as React from 'react'
 import { connect } from 'react-redux'
 
@@ -29,9 +30,11 @@ class StatsBar extends React.Component<IStatsProps, IStatsState> {
   }
 
   private tick = () => {
-    this.setState({
-      hundredths: this.state.hundredths + 1,
-    })
+    this.setState(
+      produce<IStatsState>(this.state, (draft) => {
+        draft.hundredths += 1
+      }),
+    )
   }
 
   private stopTimer = () => {
@@ -44,16 +47,19 @@ class StatsBar extends React.Component<IStatsProps, IStatsState> {
     }
     const { chars } = this.props
     if (prevProps.chars === 0 && chars === 1) {
+      // if we are starting typing a new text
       this.startTimer()
       this.setState({
         chars,
       })
     } else if (prevProps.chars !== 0 && chars === 0) {
+      // if we finished a text
       this.stopTimer()
       this.setState({
         chars: prevProps.chars,
       })
     } else {
+      // if we are in the middle of a text
       this.setState({
         chars,
       })

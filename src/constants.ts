@@ -22,3 +22,5 @@ export enum ActionName {
   changeCharsTypes = 'CHANGE_CHARS_TYPED',
   changeErrorPercent = 'CHANGE_ERROR_PERCENT',
 }
+
+export const GITHUB_URL = 'https://github.com/cjbassi/wpm-react'
