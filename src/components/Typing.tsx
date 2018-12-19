@@ -1,7 +1,6 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 import { Dispatch } from 'redux'
-import styled from 'styled-components'
 
 import {
   changeCharsTyped,
@@ -16,27 +15,6 @@ const CURSOR_COLOR = '#BEBEBE'
 const ERROR_COLOR = 'red'
 const FONT = '"Courier New", Courier, monospace'
 
-const FontCSS = styled.div`
-  font-family: ${FONT};
-`
-
-const InlineCSS = styled.div`
-  display: inline;
-`
-
-const TypedColorCSS = styled.mark`
-  color: ${TYPED_COLOR};
-  background: #ffffff;
-`
-
-const ErrorColorCSS = styled.mark`
-  background-color: ${ERROR_COLOR};
-`
-
-const CursorColorCSS = styled.mark`
-  background-color: ${CURSOR_COLOR};
-`
-
 interface ITypingProps {
   text: string
   newText: () => void
@@ -47,14 +25,14 @@ interface ITypingProps {
 
 interface ITypingState {
   cursorPosition: number
-  errorPosition: number | null
+  errorPosition?: number
   errorSum: number
 }
 
 class Typing extends React.Component<ITypingProps, ITypingState> {
   public readonly state: ITypingState = {
     cursorPosition: 0,
-    errorPosition: null,
+    errorPosition: undefined,
     errorSum: 0,
   }
 
@@ -67,7 +45,7 @@ class Typing extends React.Component<ITypingProps, ITypingState> {
       if (PRINTABLE_CHARACTERS.includes(keydown.event.key)) {
         // if a printable character was just typed
         if (
-          errorPosition === null &&
+          errorPosition === undefined &&
           keydown.event.key !== text[cursorPosition]
         ) {
           // set errorPosition to cursorPosition if we typed an error without any outstanding errors
@@ -77,10 +55,10 @@ class Typing extends React.Component<ITypingProps, ITypingState> {
         }
         cursorPosition += 1
         // start a new session if we reach the end with no outstanding errors
-        if (cursorPosition === text.length && errorPosition === null) {
+        if (cursorPosition === text.length && errorPosition === undefined) {
           newText()
           cursorPosition = 0
-          errorPosition = null
+          errorPosition = undefined
           errorSum = 0
         }
         // make sure the cursor doesn't go more than 1 past the length if we finish a session with outstanding errors
@@ -95,25 +73,26 @@ class Typing extends React.Component<ITypingProps, ITypingState> {
       } else if (keydown.event.key === 'Backspace') {
         if (cursorPosition > 0) {
           cursorPosition -= 1
-          // checks to see if we can set errorPosition to null if we backspaced over it
+          // checks to see if we can set errorPosition to undefined if we backspaced over it
           errorPosition =
-            errorPosition === null
-              ? null
+            errorPosition === undefined
+              ? undefined
               : cursorPosition > errorPosition
                 ? errorPosition
-                : null
+                : undefined
           this.setState({
             cursorPosition,
             errorPosition,
           })
         }
       }
-      const chars = errorPosition === null ? cursorPosition : errorPosition
+      const chars =
+        errorPosition === undefined ? cursorPosition : errorPosition
       changeCharsTyped(chars)
     } else if (prevProps.text !== text) {
       this.setState({
         cursorPosition: 0,
-        errorPosition: null,
+        errorPosition: undefined,
       })
     }
   }
@@ -122,20 +101,23 @@ class Typing extends React.Component<ITypingProps, ITypingState> {
     const { text } = this.props
     const { cursorPosition, errorPosition } = this.state
     return (
-      <FontCSS>
-        {errorPosition === null ? (
-          <TypedColorCSS>{text.slice(0, cursorPosition)}</TypedColorCSS>
-        ) : (
-          <InlineCSS>
-            <TypedColorCSS>{text.slice(0, errorPosition)}</TypedColorCSS>
-            <ErrorColorCSS>
-              {text.slice(errorPosition, cursorPosition)}
-            </ErrorColorCSS>
-          </InlineCSS>
+      <div style={{ fontFamily: FONT }}>
+        <mark style={{ color: TYPED_COLOR, background: '#ffffff' }}>
+          {text.slice(
+            0,
+            errorPosition === undefined ? cursorPosition : errorPosition,
+          )}
+        </mark>
+        {errorPosition !== undefined && (
+          <mark style={{ backgroundColor: ERROR_COLOR }}>
+            {text.slice(errorPosition, cursorPosition)}
+          </mark>
         )}
-        <CursorColorCSS>{text[cursorPosition]}</CursorColorCSS>
+        <mark style={{ backgroundColor: CURSOR_COLOR }}>
+          {text[cursorPosition]}
+        </mark>
         {text.slice(cursorPosition + 1, text.length)}
-      </FontCSS>
+      </div>
     )
   }
 }

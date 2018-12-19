@@ -4,8 +4,8 @@ import { connect } from 'react-redux'
 import { IStoreState } from '../store'
 
 interface ITextInfoProps {
-  author: string | null
-  context: string | null
+  author?: string
+  context?: string
 }
 
 class TextInfo extends React.Component<ITextInfoProps> {

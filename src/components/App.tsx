@@ -10,7 +10,7 @@ import { IStoreState } from '../store'
 import TextInfo from './TextInfo'
 
 interface IAppProps {
-  author: string | null
+  author?: string
   keydown?: any
 }
 
@@ -29,7 +29,7 @@ class App extends React.Component<IAppProps> {
         <Stats />
         <br />
         <Typing keydown={keydown} />
-        {author !== null && (
+        {author !== undefined && (
           <div>
             <br />
             <TextInfo />

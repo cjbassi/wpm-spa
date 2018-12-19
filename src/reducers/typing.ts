@@ -1,34 +1,23 @@
-import { combineReducers } from 'redux'
-
-import ActionType from '../actions'
-import { ActionName } from '../constants'
+import { Action, ActionName } from '../actions'
 import { ITypingData } from '../store'
 
-export const changeCharsTyped = (
-  state: number = 0,
-  action: ActionType,
-): number => {
+const initialState = {
+  charsTyped: 0,
+  errorPercent: 0,
+}
+
+export default (
+  state: ITypingData = initialState,
+  action: Action,
+): ITypingData => {
   switch (action.type) {
     case ActionName.changeCharsTypes:
-      return action.payload.charsTyped
-    default:
-      return state
-  }
-}
-
-export const changeErrorPercent = (
-  state: number = 0,
-  action: ActionType,
-): number => {
-  switch (action.type) {
     case ActionName.changeErrorPercent:
-      return action.payload.errorPercent
+      return {
+        ...state,
+        ...action.payload,
+      }
     default:
       return state
   }
 }
-
-export default combineReducers<ITypingData, ActionType>({
-  charsTyped: changeCharsTyped,
-  errorPercent: changeErrorPercent,
-})

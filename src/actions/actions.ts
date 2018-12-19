@@ -1,6 +1,6 @@
 import { action } from 'typesafe-actions'
 
-import { ActionName } from '../constants'
+import { ActionName } from './index'
 
 export const newText = (mode?: string, words?: string[]) =>
   action(ActionName.newText, { mode, words })

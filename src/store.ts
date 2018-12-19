@@ -5,8 +5,8 @@ import rootReducer from './reducers'
 export interface ITextData {
   mode: string
   text: string
-  author: string | null
-  context: string | null
+  author?: string
+  context?: string
 }
 
 export interface ITypingData {

@@ -1,14 +1,9 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 import { Dispatch } from 'redux'
-import styled from 'styled-components'
 
 import { newText } from '../actions/actions'
 import { Mode } from '../constants'
-
-const InlineCSS = styled.div`
-  display: inline;
-`
 
 interface IButtonProps {
   newText: (mode?: string, words?: string[]) => void
@@ -89,13 +84,13 @@ class Buttons extends React.Component<IButtonProps, IButtonState> {
           {Mode.repeatedWords}
         </button>
         {repeatedWordsMode && (
-          <InlineCSS>
+          <div style={{ display: 'inline' }}>
             {' '}
             <form style={{ display: 'inline' }} onSubmit={this.handleSubmit}>
               <input type='text' value={input} onChange={this.handleChange} />
               <input type='submit' value='Submit' />
             </form>
-          </InlineCSS>
+          </div>
         )}
       </div>
     )

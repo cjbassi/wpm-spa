@@ -1,8 +1,7 @@
 import * as _ from 'lodash'
 
-import ActionType from '../actions'
+import { Action, ActionName } from '../actions'
 import {
-  ActionName,
   Mode,
   NUMBERS,
   PRINTABLE_CHARACTERS,
@@ -25,10 +24,10 @@ export const newQuote = (): ITextData => {
 
 export const newCode = (): ITextData => {
   return {
-    author: null,
-    context: null,
+    author: undefined,
+    context: undefined,
     mode: Mode.code,
-    text: '',
+    text: '', // TODO
   }
 }
 
@@ -37,8 +36,8 @@ export const newRandom = (): ITextData => {
     .map(() => _.sample(PRINTABLE_CHARACTERS))
     .join('')
   return {
-    author: null,
-    context: null,
+    author: undefined,
+    context: undefined,
     mode: Mode.random,
     text,
   }
@@ -49,8 +48,8 @@ export const newSymbols = (): ITextData => {
     .map(() => _.sample(SYMBOLS))
     .join('')
   return {
-    author: null,
-    context: null,
+    author: undefined,
+    context: undefined,
     mode: Mode.symbols,
     text,
   }
@@ -61,29 +60,26 @@ export const newNumbers = (): ITextData => {
     .map(() => _.sample(NUMBERS))
     .join('')
   return {
-    author: null,
-    context: null,
+    author: undefined,
+    context: undefined,
     mode: Mode.numbers,
     text,
   }
 }
 
-export const newRepeated = (words: string[] | undefined): ITextData => {
+export const newRepeated = (words?: string[]): ITextData => {
   const text = _.range(RANDOM_LENGTH)
     .map(() => _.sample(words))
     .join(' ')
   return {
-    author: null,
-    context: null,
+    author: undefined,
+    context: undefined,
     mode: Mode.repeatedWords,
     text,
   }
 }
 
-export default (
-  state: ITextData = newQuote(),
-  action: ActionType,
-): ITextData => {
+export default (state: ITextData = newQuote(), action: Action): ITextData => {
   switch (action.type) {
     case ActionName.newText:
       const mode =
