@@ -12,7 +12,7 @@ self.__precacheManifest = [
     "url": "/wpm-spa/static/js/runtime~main.0ef47870.js"
   },
   {
-    "revision": "d16280d347da304ec7739fc887321f00",
+    "revision": "48c459a892ad455c1b0812807c418b48",
     "url": "/wpm-spa/index.html"
   }
 ];
