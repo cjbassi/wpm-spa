@@ -17,4 +17,4 @@ export enum Mode {
   repeatedWords = 'repeated-words',
 }
 
-export const GITHUB_URL = 'https://github.com/cjbassi/wpm-react'
+export const GITHUB_URL = 'https://github.com/cjbassi/wpm-spa'

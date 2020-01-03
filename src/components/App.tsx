@@ -22,7 +22,7 @@ class App extends React.Component<IAppProps> {
     return (
       <div>
         <h3>
-          <a href={GITHUB_URL}>wpm-react</a>
+          <a href={GITHUB_URL}>wpm-spa</a>
         </h3>
         <Buttons />
         <br />
