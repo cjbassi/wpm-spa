@@ -5,7 +5,7 @@
   "homepage": "http://cjbassi.github.io/wpm-spa",
   "dependencies": {
     "immer": "^1.7.4",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.19",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
     "react-keydown": "^1.9.7",
